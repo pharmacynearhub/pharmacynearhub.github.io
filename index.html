@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="google-site-verification" content="HoWofmErOOKMSn8dHeXvBTb5cGoEBEB1rQ7Y3CrUYgY" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Pharmacy Near Me — Find Pharmacies Near You, With Hours &amp; Directions</title>
+    <meta name="description" content="Find pharmacies near you with Pharmacy Near Me. Search by your location or by city and ZIP code to see nearby pharmacies with distances, addresses, opening hours from OpenStreetMap data, and directions." />
+    <meta name="keywords" content="pharmacy near me, find a pharmacy, 24 hour pharmacy, pharmacies near me, pharmacy opening hours" />
+    <link rel="canonical" href="https://pharmacynearhub.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pharmacy Near Me" />
+    <meta property="og:title" content="Pharmacy Near Me — Find Pharmacies Near You" />
+    <meta property="og:description" content="Search by location, city or ZIP code to find pharmacies near you, with real distances, opening hours and directions. Free, no sign-up." />
+    <meta property="og:url" content="https://pharmacynearhub.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Pharmacy Near Me — Find Pharmacies Near You" />
+    <meta name="twitter:description" content="Find pharmacies near you with distances, opening hours and directions, powered by OpenStreetMap data." />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Pharmacy Near Me",
+          "url": "https://pharmacynearhub.github.io/"
+        },
+        {
+          "@type": "WebApplication",
+          "name": "Pharmacy Near Me",
+          "url": "https://pharmacynearhub.github.io/",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "Any",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "description": "A free pharmacy finder that uses OpenStreetMap data to show pharmacies near your location or a city or ZIP code you enter, with distances, opening hours and directions."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "How does Pharmacy Near Me find pharmacies?", "acceptedAnswer": { "@type": "Answer", "text": "The finder uses free OpenStreetMap data. When you share your location or type a city or ZIP code, your browser looks up pharmacies recorded in the OpenStreetMap database near that point and works out the distance to each one." } },
+            { "@type": "Question", "name": "Is Pharmacy Near Me free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The site is completely free, needs no account and no sign-up, and the map data it uses is provided freely by the OpenStreetMap community." } },
+            { "@type": "Question", "name": "Are the opening hours guaranteed to be correct?", "acceptedAnswer": { "@type": "Answer", "text": "No. Opening hours come from community-maintained OpenStreetMap data and can be out of date, especially around public holidays. Always confirm the hours with the pharmacy before you travel, particularly late at night." } },
+            { "@type": "Question", "name": "Does the site store or track my location?", "acceptedAnswer": { "@type": "Answer", "text": "No. Your location is used only inside your own browser to run the search. The site has no accounts and no database, and your coordinates are never saved by us." } },
+            { "@type": "Question", "name": "Why is a pharmacy I know missing from the results?", "acceptedAnswer": { "@type": "Answer", "text": "Results come from OpenStreetMap, which is built by volunteers. A pharmacy that has not been added to the map yet will not appear. New pharmacies, and ones that have recently moved or closed, are the most common gaps." } },
+            { "@type": "Question", "name": "How do I get directions to a pharmacy?", "acceptedAnswer": { "@type": "Answer", "text": "Every result has a Directions link. It opens Google Maps with the pharmacy set as the destination, so you can get driving, walking or public transport directions from wherever you are." } },
+            { "@type": "Question", "name": "How can I find a pharmacy that is open now or overnight?", "acceptedAnswer": { "@type": "Answer", "text": "Run a search and check the opening hours shown with each result. Pharmacies marked as open 24 hours, or with hours covering the current time, are your best options. Our guide to finding a 24-hour pharmacy explains the full process, including calling ahead." } },
+            { "@type": "Question", "name": "What should I do if no pharmacy is open near me?", "acceptedAnswer": { "@type": "Answer", "text": "Try a wider search radius, as a pharmacy in the next town may be open. If the need is urgent and cannot wait, contact your local urgent care service, an out-of-hours doctor line, or, in an emergency, your local emergency number." } },
+            { "@type": "Question", "name": "Does Pharmacy Near Me give medical advice?", "acceptedAnswer": { "@type": "Answer", "text": "No. The site provides general information and a pharmacy finder only. It does not diagnose, recommend medicines or replace the advice of a pharmacist, doctor or other qualified professional." } },
+            { "@type": "Question", "name": "Which places does the finder cover?", "acceptedAnswer": { "@type": "Answer", "text": "Anywhere OpenStreetMap volunteers have mapped pharmacies, which includes most towns and cities around the world. Coverage is strongest in well-mapped urban areas and thinner in some rural regions." } }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #ffffff;
+        --ink: #1d2621;
+        --muted: #57645d;
+        --accent: #0e7a4f;
+        --accent-strong: #095c3a;
+        --accent-soft: #eef6f1;
+        --line: #dce4de;
+        --warn-bg: #fdf7e0;
+        --warn-ink: #5f5210;
+        --err-bg: #fdeeee;
+        --err-ink: #7c1d1d;
+        --field-bg: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121714;
+          --ink: #e4eae6;
+          --muted: #9daca2;
+          --accent: #4cc38a;
+          --accent-strong: #7fd6ab;
+          --accent-soft: #1a2620;
+          --line: #2c3831;
+          --warn-bg: #2e2a14;
+          --warn-ink: #e5d78a;
+          --err-bg: #331b1b;
+          --err-ink: #f0a3a3;
+          --field-bg: #1a211d;
+        }
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.65;
+      }
+      h1, h2, h3 { font-family: "Lora", Georgia, "Times New Roman", serif; line-height: 1.25; font-weight: 600; }
+      h1 { font-size: 2rem; margin: 0 0 0.6rem; }
+      h2 { font-size: 1.45rem; margin: 2.2rem 0 0.7rem; }
+      h3 { font-size: 1.15rem; margin: 1.6rem 0 0.5rem; }
+      p { margin: 0 0 1rem; }
+      a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+      a:hover { color: var(--accent-strong); }
+      .wrap { max-width: 780px; margin: 0 auto; padding: 0 1.1rem; }
+      header.site {
+        border-bottom: 1px solid var(--line);
+        padding: 0.85rem 0;
+      }
+      .header-in { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1.4rem; }
+      .brand { font-family: "Lora", Georgia, serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+      .brand .cross { color: var(--accent); }
+      nav.main { display: flex; flex-wrap: wrap; gap: 0.2rem 1.1rem; margin-left: auto; }
+      nav.main a { color: var(--ink); text-decoration: none; font-weight: 600; padding: 0.35rem 0.1rem; }
+      nav.main a:hover, nav.main a.active { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+      main { padding: 1.6rem 0 2.5rem; }
+      .page { display: none; }
+      .page.on { display: block; }
+      .lede { font-size: 1.13rem; color: var(--muted); margin-bottom: 1.4rem; }
+      /* Finder */
+      .finder { background: var(--accent-soft); border-radius: 10px; padding: 1.2rem 1.2rem 1.3rem; margin: 1.2rem 0 1.4rem; }
+      .finder h2 { margin-top: 0; font-size: 1.3rem; }
+      .finder-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+      .finder input[type="text"] {
+        flex: 1 1 220px; padding: 0.55rem 0.8rem; font-size: 1rem; font-family: inherit;
+        border: 1px solid var(--line); border-radius: 8px; background: var(--field-bg); color: var(--ink);
+      }
+      .finder select {
+        padding: 0.55rem 0.6rem; font-size: 1rem; font-family: inherit;
+        border: 1px solid var(--line); border-radius: 8px; background: var(--field-bg); color: var(--ink);
+      }
+      .btn {
+        appearance: none; border: 0; border-radius: 8px; cursor: pointer;
+        background: var(--accent); color: #fff; font-family: inherit; font-weight: 700; font-size: 1rem;
+        padding: 0.55rem 1.1rem; min-height: 2.75rem;
+      }
+      .btn:hover { background: var(--accent-strong); }
+      .btn.secondary { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+      .btn.secondary:hover { color: var(--accent-strong); border-color: var(--accent-strong); }
+      .btn[disabled] { opacity: 0.6; cursor: wait; }
+      @media (prefers-color-scheme: dark) { .btn { color: #0c130f; } .btn.secondary { color: var(--accent); } }
+      .finder .or { text-align: center; color: var(--muted); margin: 0.7rem 0; font-size: 0.95rem; }
+      .status { margin-top: 0.9rem; min-height: 1.5em; }
+      .status .note { color: var(--muted); }
+      .alert { border-radius: 8px; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.98rem; }
+      .alert.warn { background: var(--warn-bg); color: var(--warn-ink); }
+      .alert.err { background: var(--err-bg); color: var(--err-ink); }
+      .mapbox { margin: 1.2rem 0; }
+      .mapbox iframe { width: 100%; height: 340px; border: 1px solid var(--line); border-radius: 10px; }
+      .map-credit { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+      /* Results */
+      .results-head { margin-top: 1.6rem; }
+      ul.results { list-style: none; margin: 0; padding: 0; }
+      ul.results li { border-top: 1px solid var(--line); padding: 1rem 0.2rem; }
+      ul.results li:first-child { border-top: 0; }
+      .r-name { font-family: "Lora", Georgia, serif; font-weight: 600; font-size: 1.12rem; }
+      .r-dist { color: var(--accent); font-weight: 700; white-space: nowrap; }
+      .r-line { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+      .r-addr, .r-hours { color: var(--muted); font-size: 0.98rem; }
+      .r-open24 { color: var(--accent); font-weight: 700; }
+      .r-actions { margin-top: 0.35rem; }
+      /* Articles list (plain, no cards) */
+      .article-list { list-style: none; margin: 0; padding: 0; }
+      .article-list li { border-top: 1px solid var(--line); padding: 1.1rem 0; }
+      .article-list li:first-child { border-top: 0; padding-top: 0.3rem; }
+      .article-list .a-title { font-family: "Lora", Georgia, serif; font-size: 1.2rem; font-weight: 600; }
+      .article-list p { color: var(--muted); margin: 0.3rem 0 0; }
+      .meta-line { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.2rem; }
+      details.faq { border-top: 1px solid var(--line); padding: 0.4rem 0; }
+      details.faq:last-of-type { border-bottom: 1px solid var(--line); }
+      details.faq summary { cursor: pointer; font-weight: 700; padding: 0.55rem 0; font-size: 1.05rem; }
+      details.faq p { color: var(--muted); padding-bottom: 0.7rem; }
+      footer.site { border-top: 1px solid var(--line); padding: 1.6rem 0 2.2rem; color: var(--muted); font-size: 0.95rem; }
+      footer.site nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; margin-bottom: 0.9rem; }
+      footer.site nav a { padding: 0.3rem 0; }
+      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      @media (max-width: 560px) {
+        h1 { font-size: 1.65rem; }
+        nav.main { margin-left: 0; }
+        .mapbox iframe { height: 280px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap header-in">
+        <a class="brand" href="#/"><span class="cross">✚</span> Pharmacy Near Me</a>
+        <nav class="main" aria-label="Main navigation">
+          <a href="#/" data-nav="home">Home</a>
+          <a href="#/how-it-works" data-nav="how-it-works">How It Works</a>
+          <a href="#/articles" data-nav="articles">Articles</a>
+          <a href="#/faq" data-nav="faq">FAQ</a>
+          <a href="#/about" data-nav="about">About</a>
+          <a href="#/contact" data-nav="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+
+      <!-- ============ HOME ============ -->
+      <section class="page" id="page-home">
+        <h1>Find a pharmacy near you</h1>
+        <p class="lede">Pharmacy Near Me searches live map data to show the pharmacies closest to you — with real distances, addresses, opening hours where the map provides them, and a directions link for every result. It is free, and there is nothing to sign up for.</p>
+
+        <div class="finder" id="finder">
+          <h2>Search for pharmacies</h2>
+          <div class="finder-row">
+            <button class="btn" id="btn-locate" type="button">Use my location</button>
+            <label class="sr-only" for="radius-geo">Search radius</label>
+            <select id="radius-geo" aria-label="Search radius for location search">
+              <option value="2">Within 2 miles</option>
+              <option value="5" selected>Within 5 miles</option>
+              <option value="10">Within 10 miles</option>
+              <option value="25">Within 25 miles</option>
+            </select>
+          </div>
+          <p class="or">— or search by place —</p>
+          <form class="finder-row" id="form-search">
+            <label class="sr-only" for="q">City, town or ZIP code</label>
+            <input type="text" id="q" placeholder="Enter a city, town or ZIP code" autocomplete="off" />
+            <label class="sr-only" for="radius-q">Search radius</label>
+            <select id="radius-q" aria-label="Search radius for place search">
+              <option value="2">Within 2 miles</option>
+              <option value="5" selected>Within 5 miles</option>
+              <option value="10">Within 10 miles</option>
+              <option value="25">Within 25 miles</option>
+            </select>
+            <button class="btn" type="submit" id="btn-search">Search</button>
+          </form>
+          <div class="status" id="status" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="mapbox" id="mapbox" hidden>
+          <iframe id="map-frame" title="Map of the search area" loading="lazy"></iframe>
+          <p class="map-credit">Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors. The marker shows the centre of your search area.</p>
+        </div>
+
+        <div id="results-wrap" hidden>
+          <h2 class="results-head" id="results-title">Pharmacies near you</h2>
+          <p id="results-sub" class="meta-line"></p>
+          <ul class="results" id="results"></ul>
+          <div class="alert warn">Opening hours come from community-maintained OpenStreetMap data and can be out of date, especially on public holidays. Please confirm the hours with the pharmacy before you travel — this matters most late at night.</div>
+        </div>
+
+        <h2>How finding a pharmacy works here</h2>
+        <p>When you tap “Use my location” or search for a place, your browser asks the free OpenStreetMap services which pharmacies are recorded around that point, measures the straight-line distance to each one, and lists the closest first. You can read a fuller explanation of <a href="#/how-it-works">how it works</a>, including where the data comes from and what to do when a result looks wrong.</p>
+        <p>Need a pharmacy outside normal hours? Our guide to finding a <a href="#/find-24-hour-pharmacy">24-hour pharmacy</a> walks through the steps that actually work at 2 a.m. — checking hours properly, widening your search, and calling ahead before you set off. If you are not sure whether your problem needs a pharmacist, a doctor or someone else, it is worth reading about <a href="#/what-pharmacists-do">what a pharmacist can help with</a> first; pharmacists can do far more than hand over prescriptions. And once you have collected your medicine, knowing how to <a href="#/how-to-read-prescription-label">read a prescription label</a> helps you take it safely and spot mistakes early.</p>
+        <p>If nothing nearby is open and the problem cannot wait, do not keep searching the map. Contact your local out-of-hours medical service, an urgent care centre, or — in an emergency — your local emergency number.</p>
+
+        <h2>Latest articles</h2>
+        <ul class="article-list">
+          <li>
+            <a class="a-title" href="#/find-24-hour-pharmacy">How to Find a 24-Hour Pharmacy Near You</a>
+            <p>A step-by-step guide for the middle of the night: how to search properly, how to check hours before you travel, and what to do when nothing nearby is open.</p>
+          </li>
+          <li>
+            <a class="a-title" href="#/what-pharmacists-do">What Can a Pharmacist Help You With? More Than You Think</a>
+            <p>Vaccinations, blood pressure checks, minor illnesses, medication reviews and more — the everyday help a pharmacist can give without an appointment.</p>
+          </li>
+          <li>
+            <a class="a-title" href="#/how-to-read-prescription-label">How to Read a Prescription Label</a>
+            <p>Every line on the label explained in plain language: the dose instructions, refills, dates and warning stickers, and what to do if something looks wrong.</p>
+          </li>
+        </ul>
+        <p>Browse all of our guides on the <a href="#/articles">articles</a> page, or check the <a href="#/faq">frequently asked questions</a> for quick answers about how the finder works.</p>
+      </section>
+
+      <!-- ============ HOW IT WORKS ============ -->
+      <section class="page" id="page-how-it-works">
+        <h1>How It Works</h1>
+        <p class="lede">Pharmacy Near Me is a simple tool built on free, open map data. This page explains, in plain language, what happens when you run a search and how much you should trust what you see.</p>
+
+        <h2>Step 1: Tell us where to look</h2>
+        <p>There are two ways to start. “Use my location” asks your browser for your current position, using the same location feature your maps app uses. Your browser will ask permission first, and if you decline, nothing is shared and nothing breaks — you can simply use the search box instead. The search box accepts a city, a town, a neighbourhood or a ZIP or postal code, and converts it into map coordinates using OpenStreetMap’s free geocoding service, called Nominatim.</p>
+
+        <h2>Step 2: We ask the map what is nearby</h2>
+        <p>With a centre point in hand, your browser queries the Overpass API — a read-only search service over the OpenStreetMap database — for every feature tagged as a pharmacy within the radius you chose: 2, 5, 10 or 25 miles. To make this reliable, the same question is sent to three independent Overpass servers at once, and the first one to answer provides your results. If none of them can be reached within about a minute, the finder tells you honestly rather than showing you stale or invented results.</p>
+
+        <h2>Step 3: Distances are worked out properly</h2>
+        <p>Every pharmacy that comes back is measured against your search point using the haversine formula — the standard way of calculating the distance between two points on the Earth’s surface. Results are sorted with the closest first and labelled in miles. Bear in mind these are straight-line distances: the road route to a pharmacy can be longer, which is why each result carries a Directions link that opens Google Maps for real turn-by-turn routing.</p>
+
+        <h2>Where the information comes from</h2>
+        <p>Names, addresses and opening hours come from OpenStreetMap, a map of the world built and maintained by volunteers — a little like Wikipedia, but for geography. That openness is why this tool can be free, and it is also why you should treat the details as a strong starting point rather than a guarantee. A pharmacy’s hours on the map are only as current as the last time a volunteer checked them. Public holidays, staff shortages and recent changes of ownership are the usual reasons hours on any map can be wrong, so please confirm before travelling, especially at night. Our guide to finding a <a href="#/find-24-hour-pharmacy">24-hour pharmacy</a> explains how to check properly.</p>
+
+        <h2>What we do with your location</h2>
+        <p>Nothing beyond the search itself. Your coordinates are used inside your own browser and sent only to the OpenStreetMap services needed to answer your query. This website has no accounts, no database and no tracking of where you searched from. You can read the details in our <a href="#/privacy">privacy policy</a>.</p>
+
+        <h2>When results look wrong</h2>
+        <p>If a pharmacy you know is missing, it usually means nobody has added it to OpenStreetMap yet, or it has been mapped under a slightly different category. If a pharmacy appears that has closed, the map simply has not caught up. Anyone can fix these things: OpenStreetMap is free to edit, and local knowledge is exactly what it runs on. In the meantime, widening the search radius often surfaces an alternative you did not know about — and if you are heading out for medicine, a quick look at <a href="#/what-pharmacists-do">what a pharmacist can help with</a> can save you a second trip.</p>
+      </section>
+
+      <!-- ============ ARTICLES INDEX ============ -->
+      <section class="page" id="page-articles">
+        <h1>Articles</h1>
+        <p class="lede">Plain, practical guides about finding pharmacies and using them well — written in simple prose, with no jargon we can avoid.</p>
+        <ul class="article-list">
+          <li>
+            <a class="a-title" href="#/find-24-hour-pharmacy">How to Find a 24-Hour Pharmacy Near You</a>
+            <p>A step-by-step guide for the middle of the night: how to search properly, how to check hours before you travel, and what to do when nothing nearby is open.</p>
+          </li>
+          <li>
+            <a class="a-title" href="#/what-pharmacists-do">What Can a Pharmacist Help You With? More Than You Think</a>
+            <p>Vaccinations, blood pressure checks, minor illnesses, medication reviews and more — the everyday help a pharmacist can give without an appointment.</p>
+          </li>
+          <li>
+            <a class="a-title" href="#/how-to-read-prescription-label">How to Read a Prescription Label</a>
+            <p>Every line on the label explained in plain language: the dose instructions, refills, dates and warning stickers, and what to do if something looks wrong.</p>
+          </li>
+        </ul>
+        <p>Looking for a pharmacy right now? Go back to the <a href="#/">finder on the home page</a> and search by location, city or ZIP code.</p>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="page" id="page-faq">
+        <h1>Frequently Asked Questions</h1>
+        <p class="lede">Quick answers about how the finder works, where its data comes from, and what to do when you need a pharmacy urgently.</p>
+
+        <details class="faq">
+          <summary>How does Pharmacy Near Me find pharmacies?</summary>
+          <p>The finder uses free OpenStreetMap data. When you share your location or type a city or ZIP code, your browser looks up pharmacies recorded in the OpenStreetMap database near that point and works out the distance to each one. See <a href="#/how-it-works">how it works</a> for the full explanation.</p>
+        </details>
+        <details class="faq">
+          <summary>Is Pharmacy Near Me free to use?</summary>
+          <p>Yes. The site is completely free, needs no account and no sign-up, and the map data it uses is provided freely by the OpenStreetMap community.</p>
+        </details>
+        <details class="faq">
+          <summary>Are the opening hours guaranteed to be correct?</summary>
+          <p>No. Opening hours come from community-maintained OpenStreetMap data and can be out of date, especially around public holidays. Always confirm the hours with the pharmacy before you travel, particularly late at night.</p>
+        </details>
+        <details class="faq">
+          <summary>Does the site store or track my location?</summary>
+          <p>No. Your location is used only inside your own browser to run the search. The site has no accounts and no database, and your coordinates are never saved by us. Our <a href="#/privacy">privacy policy</a> covers this in more detail.</p>
+        </details>
+        <details class="faq">
+          <summary>Why is a pharmacy I know missing from the results?</summary>
+          <p>Results come from OpenStreetMap, which is built by volunteers. A pharmacy that has not been added to the map yet will not appear. New pharmacies, and ones that have recently moved or closed, are the most common gaps. Trying a wider radius sometimes helps.</p>
+        </details>
+        <details class="faq">
+          <summary>How do I get directions to a pharmacy?</summary>
+          <p>Every result has a Directions link. It opens Google Maps with the pharmacy set as the destination, so you can get driving, walking or public transport directions from wherever you are.</p>
+        </details>
+        <details class="faq">
+          <summary>How can I find a pharmacy that is open now or overnight?</summary>
+          <p>Run a search and check the opening hours shown with each result. Pharmacies marked as open 24 hours, or with hours covering the current time, are your best options. Our guide to finding a <a href="#/find-24-hour-pharmacy">24-hour pharmacy</a> explains the full process, including calling ahead before you travel.</p>
+        </details>
+        <details class="faq">
+          <summary>What should I do if no pharmacy is open near me?</summary>
+          <p>Try a wider search radius, as a pharmacy in the next town may be open. If the need is urgent and cannot wait, contact your local urgent care service, an out-of-hours doctor line, or, in an emergency, your local emergency number.</p>
+        </details>
+        <details class="faq">
+          <summary>Does Pharmacy Near Me give medical advice?</summary>
+          <p>No. The site provides general information and a pharmacy finder only. It does not diagnose, recommend medicines or replace the advice of a pharmacist, doctor or other qualified professional. See our <a href="#/disclaimer">disclaimer</a>.</p>
+        </details>
+        <details class="faq">
+          <summary>Which places does the finder cover?</summary>
+          <p>Anywhere OpenStreetMap volunteers have mapped pharmacies, which includes most towns and cities around the world. Coverage is strongest in well-mapped urban areas and thinner in some rural regions.</p>
+        </details>
+      </section>
+
+      <!-- ============ ABOUT ============ -->
+      <section class="page" id="page-about">
+        <h1>About Pharmacy Near Me</h1>
+        <p>Pharmacy Near Me exists for a very ordinary moment: you need a pharmacy, you are not sure which ones are nearby, and you want a straight answer quickly — which is closest, where exactly is it, and is it likely to be open? This site answers those questions using free, open map data, with no account, no app to install and no cost.</p>
+        <p>The finder is built on OpenStreetMap, the community-made map of the world, and on the free services around it: Nominatim for turning a place name into coordinates, and the Overpass API for finding pharmacies around a point. Because the underlying data is open, anyone can inspect it, and anyone can improve it. When the map is wrong, the fix is a map edit away — and the correction then helps everyone, not just visitors to this site.</p>
+        <p>Alongside the finder, we publish a small set of plain-language guides: how to find a pharmacy that is open around the clock, what pharmacists can actually help with day to day, and how to read the label on your medicine. They are written to be useful at the kitchen table and at the pharmacy counter alike.</p>
+        <p>One honest limitation: this site shows what the map knows. Opening hours and addresses come from community data and can lag behind reality, so the site reminds you to confirm important details with the pharmacy itself. We would rather be upfront about that than present the data as flawless. Questions or corrections are welcome via our <a href="#/contact">contact page</a>.</p>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="page" id="page-contact">
+        <h1>Contact</h1>
+        <p>The quickest way to reach us is by email:</p>
+        <p><strong>Email:</strong> <a href="mailto:contact@pharmacynearhub.github.io">contact@pharmacynearhub.github.io</a></p>
+        <p>We are glad to hear about pharmacies that are missing from the results, opening hours that look wrong, mistakes in our articles, or ideas for guides that would genuinely help. If a pharmacy’s details on the map are wrong, you can also correct them directly on OpenStreetMap, where the fix benefits every service that uses the same data.</p>
+        <p>Please note that we cannot give medical advice by email, help with individual prescriptions, or tell you whether a particular medicine is right for you. For those questions, speak to your pharmacist or doctor — our article on <a href="#/what-pharmacists-do">what a pharmacist can help with</a> explains just how much they can do. In an emergency, always call your local emergency number rather than contacting a website.</p>
+      </section>
+
+      <!-- ============ PRIVACY ============ -->
+      <section class="page" id="page-privacy">
+        <h1>Privacy Policy</h1>
+        <p class="meta-line">Last updated: 2026</p>
+        <p>Pharmacy Near Me is a simple website with no accounts, no sign-up and no database. This policy explains what information is involved when you use the finder, in plain language.</p>
+        <h2>Your location</h2>
+        <p>If you choose “Use my location”, your browser asks your permission and then provides your coordinates to the page. Those coordinates are used only to run your search: they are sent to the OpenStreetMap services described below so they can return nearby pharmacies. We do not store your location, build a history of your searches, or share it with advertisers. If you prefer, you can deny the permission and search by city or ZIP code instead; a place name you type is likewise used only to run that search.</p>
+        <h2>The services your search talks to</h2>
+        <p>The finder works by asking free public services for data: Nominatim (to convert a place name into coordinates), the Overpass API (to find pharmacies near a point), and OpenStreetMap’s map servers (to display the map). Like any web service, those operators will see your device’s IP address and the query itself as a normal part of answering it, under their own privacy policies. When you tap a Directions link, you leave this site for Google Maps, which has its own terms and privacy policy.</p>
+        <h2>Cookies and tracking</h2>
+        <p>This site does not set advertising cookies and does not run third-party analytics or social-media trackers. Your browser may store ordinary technical information needed to display the page, but nothing is used to profile you.</p>
+        <h2>Changes and contact</h2>
+        <p>If this policy changes, the updated version will be posted on this page. Questions about privacy can be sent to <a href="mailto:contact@pharmacynearhub.github.io">contact@pharmacynearhub.github.io</a>.</p>
+      </section>
+
+      <!-- ============ TERMS ============ -->
+      <section class="page" id="page-terms">
+        <h1>Terms of Use</h1>
+        <p class="meta-line">Last updated: 2026</p>
+        <p>By using Pharmacy Near Me, you agree to these terms. The site is provided free of charge, for personal use, in the hope that it is helpful — but it is provided “as is”, without warranties of any kind.</p>
+        <h2>The information on this site</h2>
+        <p>Pharmacy names, addresses, distances and opening hours come from OpenStreetMap data maintained by volunteers. We work to present that data faithfully, but we cannot guarantee that any listing is complete, current or correct. Always confirm opening hours and availability with the pharmacy before travelling, and do not rely on this site in an emergency.</p>
+        <h2>Not medical advice</h2>
+        <p>Nothing on this site is medical advice. The articles are general information only. Decisions about medicines and treatment belong to you and your healthcare professionals. Our <a href="#/disclaimer">disclaimer</a> explains this in full.</p>
+        <h2>Map data and attribution</h2>
+        <p>Map data is © OpenStreetMap contributors and is available under the Open Database License. Map imagery is provided by the OpenStreetMap Foundation. Directions links lead to Google Maps, a third-party service with its own terms.</p>
+        <h2>Acceptable use</h2>
+        <p>Please use the finder as a person browsing the web would. The underlying OpenStreetMap services are shared community resources with their own usage policies; automated or bulk querying through this site is not permitted. We may change or withdraw the site at any time, and we may update these terms by posting a new version on this page.</p>
+      </section>
+
+      <!-- ============ DISCLAIMER ============ -->
+      <section class="page" id="page-disclaimer">
+        <h1>Disclaimer</h1>
+        <p class="meta-line">Last updated: 2026</p>
+        <p><strong>General information only.</strong> Everything published on Pharmacy Near Me — the finder results and the articles alike — is general information provided for convenience. It is not medical advice, pharmaceutical advice, a diagnosis or a treatment recommendation, and it is not a substitute for the judgement of a qualified pharmacist, doctor or other healthcare professional.</p>
+        <p><strong>Accuracy of listings.</strong> Pharmacy details come from OpenStreetMap, a volunteer-maintained database. A listing may be missing, a pharmacy may have moved or closed, and opening hours may differ from those shown — particularly on public holidays or during staff shortages. Always verify critical details with the pharmacy before you travel. We accept no responsibility for losses arising from reliance on map data that turns out to be out of date.</p>
+        <p><strong>Emergencies.</strong> This website is not an emergency service. If you or someone with you is seriously unwell — for example with chest pain, difficulty breathing, severe allergic reaction, or signs of overdose — call your local emergency number immediately or go to the nearest emergency department. Do not spend time searching for a pharmacy first.</p>
+        <p><strong>Medicines.</strong> Never start, stop or change a prescribed medicine based on something you read on this or any other website. If a label, leaflet or instruction is unclear, ask the pharmacist who dispensed it — explaining labels is a normal part of their job, as our guide to <a href="#/how-to-read-prescription-label">how to read a prescription label</a> describes.</p>
+        <p><strong>External links.</strong> Links to OpenStreetMap, Google Maps and other third-party sites are provided for convenience. We do not control those sites and are not responsible for their content or availability.</p>
+      </section>
+
+      <!-- ============ ARTICLE: 24-HOUR PHARMACY ============ -->
+      <section class="page" id="page-find-24-hour-pharmacy">
+        <h1>How to Find a 24-Hour Pharmacy Near You</h1>
+        <p class="meta-line">A practical guide for when the need cannot wait until morning.</p>
+        <p>It is the middle of the night, someone in the house is unwell, and the medicine you need is sitting on a shelf somewhere across town — if only you knew which pharmacy is actually open. Finding a 24-hour pharmacy is not difficult, but it does take a little more care than a daytime search, because a wasted trip at 2 a.m. costs you far more than a wasted trip at 2 p.m. Here is how to do it properly.</p>
+
+        <h2>Start with a proper search, not a guess</h2>
+        <p>Begin with the finder on our <a href="#/">home page</a>. Use your location if you can, or type your town or ZIP code, and start with a modest radius — five miles is a sensible default in a town or city. Every result shows the pharmacy’s opening hours where the map data includes them. Look first for pharmacies marked as open 24 hours, then for late-night pharmacies whose hours cover the time you will actually arrive, not just the time you searched. If nothing in the first list is open, widen the radius step by step: ten miles, then twenty-five. In many areas the nearest overnight pharmacy is one town over, attached to a hospital, a large supermarket or a transport hub.</p>
+
+        <h2>Check the hours like a sceptic</h2>
+        <p>Opening hours on any map — including this one — come from community-maintained data, and they are the detail most likely to be out of date. A pharmacy listed as open 24 hours may have quietly changed its hours months ago; a pharmacy that looks closed may have extended its hours for a local rota. Treat the listed hours as a strong lead, not a promise. This matters most on public holidays, when even genuinely 24-hour pharmacies sometimes run reduced service, and during severe weather, when staffing decides what actually opens.</p>
+
+        <h2>Call before you travel</h2>
+        <p>This is the single most valuable step, and the one people skip because it feels old-fashioned. Find the pharmacy’s phone number, call, and confirm two things: that they are open when you will arrive, and that they have what you need in stock. A two-minute call can save a forty-minute round trip to a locked door or an empty shelf. If you need a specific prescription medicine, say so plainly — the pharmacist can check the shelf while you are still at home, and if they do not have it, they often know which nearby pharmacy does. Many pharmacists will also tell you honestly whether your problem sounds like one a pharmacy can solve at all; knowing <a href="#/what-pharmacists-do">what a pharmacist can help with</a> helps you have that conversation.</p>
+
+        <h2>Know the usual suspects</h2>
+        <p>If the search comes up empty, think about where overnight pharmacies tend to live. Pharmacies inside or beside hospitals frequently keep extended or round-the-clock hours because their customers arrive at all hours. Large supermarkets and travel hubs sometimes host pharmacies with very late closing times even if they are not literally 24-hour. Many regions also run a duty or rota system, in which local pharmacies take turns staying open overnight — the pharmacy that is closed tonight may be the one on duty tomorrow. Local health service websites and out-of-hours phone lines usually publish that rota, and a pharmacist at any daytime pharmacy can tell you how it works in your area.</p>
+
+        <h2>Prepare before the night you need it</h2>
+        <p>The best time to find your nearest 24-hour pharmacy is a calm afternoon, not a crisis. Search once while nothing is wrong, note the name, address and phone number of the closest overnight option, and keep it somewhere the whole household can find it — on the fridge, in a phone note, wherever. While you are at it, check that you know how to <a href="#/how-to-read-prescription-label">read a prescription label</a> properly, because medicines collected in a hurry at night are exactly the ones whose instructions get misread. A small home stock of basics, agreed with your pharmacist, also means fewer emergencies become pharmacy runs in the first place.</p>
+
+        <h2>When a pharmacy is not the answer</h2>
+        <p>Sometimes the honest conclusion of a night-time search is that no pharmacy is open within reach — or that the problem is bigger than a pharmacy. Breathing difficulties, chest pain, severe allergic reactions, uncontrolled bleeding, or a child who is drowsy and hard to wake are emergencies: call your local emergency number or go to an emergency department, and do not let the search for an open pharmacy delay you. For urgent problems that are not emergencies, out-of-hours doctor services and urgent care centres can prescribe and, in many places, supply the first dose of what you need. A pharmacy finder is a tool for ordinary needs at extraordinary hours — use it confidently for those, and escalate without hesitation for anything more.</p>
+        <p><em>Related reading: <a href="#/what-pharmacists-do">What Can a Pharmacist Help You With?</a> and <a href="#/how-to-read-prescription-label">How to Read a Prescription Label</a>.</em></p>
+      </section>
+
+      <!-- ============ ARTICLE: WHAT PHARMACISTS DO ============ -->
+      <section class="page" id="page-what-pharmacists-do">
+        <h1>What Can a Pharmacist Help You With? More Than You Think</h1>
+        <p class="meta-line">The most underused expert in healthcare may be standing behind your local pharmacy counter.</p>
+        <p>Most people meet their pharmacist in a thirty-second transaction: hand over a prescription, wait, collect a bag, leave. It is easy to walk away thinking that dispensing medicine is the whole job. In reality, pharmacists are university-trained clinicians whose knowledge of medicines is deeper than almost anyone else’s in the health system — and a large part of what they offer needs no appointment, no referral and no fee. Here is what you are entitled to ask about.</p>
+
+        <h2>Advice on everyday illnesses</h2>
+        <p>Colds, coughs, sore throats, hay fever, headaches, mild stomach upsets, aches and strains, skin rashes, insect bites, conjunctivitis, cold sores — pharmacists assess and advise on minor conditions like these every day. They can recommend an over-the-counter treatment that actually suits you, warn you when a popular remedy clashes with a medicine you already take, and, just as importantly, tell you when a symptom deserves a doctor instead. In many regions, pharmacists can now supply certain prescription-only treatments directly for common conditions such as ear infections, sore throats and urinary infections, after a short consultation. Walking into a pharmacy first can save you days of waiting for a routine appointment.</p>
+
+        <h2>Understanding and managing your medicines</h2>
+        <p>This is the pharmacist’s home ground. If you take several medicines, you can ask for a medication review: a structured conversation about what each drug is for, whether any of them fight each other, and whether the doses and timings still make sense. Pharmacists check for interactions — between prescriptions, and between prescriptions and the vitamins, herbal products and painkillers people forget to mention. They can explain how to use inhalers, eye drops, insulin pens and other devices correctly; a surprising share of “this medicine isn’t working” turns out to be a device used slightly wrong. And if the small print ever confuses you, our companion guide on <a href="#/how-to-read-prescription-label">how to read a prescription label</a> covers the label line by line, while your pharmacist can walk through your own medicines in person.</p>
+
+        <h2>Vaccinations and health checks</h2>
+        <p>Many pharmacies offer flu jabs, COVID boosters, travel vaccinations and other immunisations, often with walk-in availability when clinics are fully booked. Common health checks include blood pressure measurement — genuinely valuable, since high blood pressure usually has no symptoms — along with, in various places, blood sugar screening, cholesterol tests, weight management support and stop-smoking programmes with follow-up coaching. These services tend to be quick, local and available at hours when other services are closed; if you are ever hunting for one late at night, our guide to finding a <a href="#/find-24-hour-pharmacy">24-hour pharmacy</a> explains the search.</p>
+
+        <h2>Emergencies of the small, urgent kind</h2>
+        <p>Run out of a regular medicine on a Sunday? In many places a pharmacist can provide an emergency supply of a prescription medicine to tide you over until your doctor reopens, after checking your records and asking a few questions. Lost medicines while travelling, a broken inhaler, emergency contraception, a child’s medicine spilled an hour before bedtime — these minor crises are daily bread at a pharmacy counter, and the staff are generally very good at solving them calmly. The earlier in the day you ask, the more options they have, so do not leave it until closing time if you can help it.</p>
+
+        <h2>Honest limits — and why they are a good sign</h2>
+        <p>A good pharmacist will sometimes say: “You need a doctor for this,” or “That needs checking today, not next week.” That is not a brush-off; it is clinical judgement, and it is one of the best reasons to ask them first. Pharmacists are trained to spot red-flag symptoms — the chest pain that is not indigestion, the rash that is not harmless, the cough that has lasted too long — and to point you to the right service quickly. Think of the pharmacy as the front door of the health system: no appointment, no queueing on the phone at 8 a.m., and a qualified professional who will either help you on the spot or send you to exactly the right place. That is a great deal more than handing over prescriptions.</p>
+        <p><em>Related reading: <a href="#/find-24-hour-pharmacy">How to Find a 24-Hour Pharmacy Near You</a> and <a href="#/how-to-read-prescription-label">How to Read a Prescription Label</a>.</em></p>
+      </section>
+
+      <!-- ============ ARTICLE: PRESCRIPTION LABEL ============ -->
+      <section class="page" id="page-how-to-read-prescription-label">
+        <h1>How to Read a Prescription Label</h1>
+        <p class="meta-line">Every line on that small sticker is there for a reason. Here is how to make sense of all of them.</p>
+        <p>A prescription label is one of the most information-dense pieces of paper in your house, squeezed onto a sticker the size of a matchbox. It is also, read properly, your personal instruction manual for taking a medicine safely. Most labels carry the same elements in roughly the same places. Once you know what each line means — and which lines to double-check — you can spot mistakes early and take your medicine with confidence.</p>
+
+        <h2>Your name, and why to check it first</h2>
+        <p>The patient’s name is usually the most prominent line, and checking it should be a habit, not an afterthought. Pharmacies dispense for whole families, and bags get mixed up — at the counter, in the car, on the kitchen table. Before the first dose, confirm the label has your name (or the name of the person the medicine is for) and, where shown, a second identifier such as a date of birth. Never take medicine from a bottle labelled for someone else, even if the drug name matches yours: strengths and instructions are personal.</p>
+
+        <h2>The medicine’s name and strength</h2>
+        <p>Next comes the drug name, which may be the brand name, the generic name, or both, followed by the strength — for example, 500 mg tablets, or a 2% cream. Strength matters as much as the name: many medicines come in several strengths that look identical on the shelf. If a refill looks different from last time — different colour, shape or markings — do not just assume a new supplier. Ask the pharmacist to confirm it is the same medicine and strength. This one question catches a large share of dispensing mix-ups and costs you thirty seconds. If you are unsure what the medicine is for at all, that is also a fair question: <a href="#/what-pharmacists-do">pharmacists explain medicines</a> like this all day, every day.</p>
+
+        <h2>The directions: the most important line</h2>
+        <p>The directions — sometimes called the “sig” — tell you how much to take, how often, and for how long: “Take one tablet twice daily with food”, or “Apply a thin layer to the affected area at night”. Read this line word by word, because the details carry real weight. “Twice daily” usually means roughly every twelve hours, not two tablets together in the morning. “With food” can mean with a meal or a substantial snack, and it is there either to protect your stomach or to help the medicine absorb. Instructions such as “shake well”, “store in the fridge” or “complete the course” are not decoration — finishing a course of antibiotics when you already feel better, for instance, is part of how the treatment works. If any direction is ambiguous — and some are — phone the pharmacy before the first dose rather than guessing.</p>
+
+        <h2>Quantity, refills and dates</h2>
+        <p>Labels typically state how much medicine is in the container (“Qty: 28”) and how many refills remain (“Refills: 2”). The quantity is worth a quick count when something feels off: running out days before the month ends can mean a dose was misunderstood. Refill information tells you whether you can collect more directly from the pharmacy or must see your prescriber first — plan ahead, because a medicine you cannot refill on a Friday evening becomes a problem by Monday. You will also find the date the prescription was filled and, on many labels, a “discard after” or expiry date. Expiry dates are real: medicines can lose strength or become unsafe after them, so do not raid the bathroom cabinet’s archaeology for an old course, and return out-of-date medicines to a pharmacy for safe disposal.</p>
+
+        <h2>The other names and numbers</h2>
+        <p>A label usually names the prescriber and the pharmacy, and carries a prescription number. These details are your audit trail. If you ever need to query a dose, report a side effect or sort out a refill while travelling, the prescription number lets any pharmacist pull up the exact record quickly. Keep medicines in their original labelled containers for this reason: a loose strip of tablets in a handbag has lost its instructions, its expiry date and its identity all at once.</p>
+
+        <h2>Warning stickers deserve a read, too</h2>
+        <p>The small auxiliary stickers — “May cause drowsiness”, “Avoid alcohol”, “Take with a full glass of water”, “Keep out of reach of children” — are added because they apply to your medicine specifically. Drowsiness warnings affect driving and work; alcohol warnings are there because the combination genuinely matters for that drug. If a warning seems to conflict with your life — you drive for a living, you are pregnant, you take other medicines — that is a conversation to have with the pharmacist before you start, not a problem to discover afterwards. And if a medicine is ever needed urgently outside normal hours, knowing how to find help matters as much as reading the label: see our guide to finding a <a href="#/find-24-hour-pharmacy">24-hour pharmacy</a>.</p>
+
+        <h2>A thirty-second routine for every new medicine</h2>
+        <p>Pulling it together: check the name is yours; check the medicine and strength match what you expected; read the directions slowly and follow them literally; note the quantity, refills and dates; and read every warning sticker. Then, if anything at all looks wrong, unclear or different from last time, ask. Pharmacists would far rather answer a question at the counter than untangle a problem a week later — it is one of the most useful things they do, and it is free.</p>
+        <p><em>Related reading: <a href="#/what-pharmacists-do">What Can a Pharmacist Help You With?</a> and <a href="#/find-24-hour-pharmacy">How to Find a 24-Hour Pharmacy Near You</a>.</em></p>
+      </section>
+
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <nav aria-label="Footer navigation">
+          <a href="#/">Home</a>
+          <a href="#/how-it-works">How It Works</a>
+          <a href="#/articles">Articles</a>
+          <a href="#/faq">FAQ</a>
+          <a href="#/about">About</a>
+          <a href="#/contact">Contact</a>
+          <a href="#/privacy">Privacy Policy</a>
+          <a href="#/terms">Terms</a>
+          <a href="#/disclaimer">Disclaimer</a>
+        </nav>
+        <p>Pharmacy data and map © OpenStreetMap contributors, available under the Open Database License. Opening hours are community-maintained and should be confirmed with the pharmacy before travelling. This site provides general information only and is not a source of medical advice.</p>
+        <p>© 2026 Pharmacy Near Me</p>
+      </div>
+    </footer>
+
+    <script>
+    (function () {
+      "use strict";
+
+      /* ---------- Router ---------- */
+      var TITLES = {
+        "home": "Pharmacy Near Me — Find Pharmacies Near You, With Hours & Directions",
+        "how-it-works": "How It Works — Pharmacy Near Me",
+        "articles": "Articles — Pharmacy Near Me",
+        "find-24-hour-pharmacy": "How to Find a 24-Hour Pharmacy Near You — Pharmacy Near Me",
+        "what-pharmacists-do": "What Can a Pharmacist Help You With? — Pharmacy Near Me",
+        "how-to-read-prescription-label": "How to Read a Prescription Label — Pharmacy Near Me",
+        "faq": "Frequently Asked Questions — Pharmacy Near Me",
+        "about": "About — Pharmacy Near Me",
+        "contact": "Contact — Pharmacy Near Me",
+        "privacy": "Privacy Policy — Pharmacy Near Me",
+        "terms": "Terms of Use — Pharmacy Near Me",
+        "disclaimer": "Disclaimer — Pharmacy Near Me"
+      };
+      var ARTICLE_ROUTES = ["articles", "find-24-hour-pharmacy", "what-pharmacists-do", "how-to-read-prescription-label"];
+
+      function currentRoute() {
+        var h = window.location.hash.replace(/^#\/?/, "").split("?")[0];
+        if (!h || !document.getElementById("page-" + h)) return "home";
+        return h;
+      }
+      function render() {
+        var route = currentRoute();
+        var pages = document.querySelectorAll(".page");
+        for (var i = 0; i < pages.length; i++) pages[i].classList.remove("on");
+        document.getElementById("page-" + route).classList.add("on");
+        document.title = TITLES[route] || TITLES.home;
+        var navKey = ARTICLE_ROUTES.indexOf(route) >= 0 ? "articles" : route;
+        var links = document.querySelectorAll("nav.main a");
+        for (var j = 0; j < links.length; j++) {
+          links[j].classList.toggle("active", links[j].getAttribute("data-nav") === navKey);
+        }
+        window.scrollTo(0, 0);
+      }
+      window.addEventListener("hashchange", render);
+
+      /* ---------- Finder ---------- */
+      var MIRRORS = [
+        "https://overpass-api.de/api/interpreter",
+        "https://overpass.kumi.systems/api/interpreter",
+        "https://overpass.nchc.org.tw/api/interpreter"
+      ];
+      var OVERALL_LIMIT = 60000;
+      var statusEl = document.getElementById("status");
+      var resultsWrap = document.getElementById("results-wrap");
+      var resultsList = document.getElementById("results");
+      var resultsTitle = document.getElementById("results-title");
+      var resultsSub = document.getElementById("results-sub");
+      var mapBox = document.getElementById("mapbox");
+      var mapFrame = document.getElementById("map-frame");
+      var btnLocate = document.getElementById("btn-locate");
+      var btnSearch = document.getElementById("btn-search");
+      var searching = false;
+
+      function setStatus(html) { statusEl.innerHTML = html; }
+      function setBusy(busy) {
+        searching = busy;
+        btnLocate.disabled = busy;
+        btnSearch.disabled = busy;
+      }
+
+      function haversineMiles(lat1, lon1, lat2, lon2) {
+        var R = 3958.8, rad = Math.PI / 180;
+        var dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return 2 * R * Math.asin(Math.sqrt(a));
+      }
+
+      function showMap(lat, lon, radiusMiles) {
+        var dLat = radiusMiles / 69.0;
+        var dLon = radiusMiles / (69.0 * Math.max(0.2, Math.cos(lat * Math.PI / 180)));
+        var bbox = (lon - dLon).toFixed(5) + "," + (lat - dLat).toFixed(5) + "," +
+                   (lon + dLon).toFixed(5) + "," + (lat + dLat).toFixed(5);
+        mapFrame.src = "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox +
+                       "&layer=mapnik&marker=" + lat.toFixed(6) + "," + lon.toFixed(6);
+        mapBox.hidden = false;
+      }
+
+      function buildAddress(tags) {
+        var parts = [];
+        var street = [tags["addr:housenumber"], tags["addr:street"]].filter(Boolean).join(" ");
+        if (street) parts.push(street);
+        if (tags["addr:city"]) parts.push(tags["addr:city"]);
+        var sz = [tags["addr:state"], tags["addr:postcode"]].filter(Boolean).join(" ");
+        if (sz) parts.push(sz);
+        return parts.join(", ");
+      }
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function fetchFirstSuccess(urls, body) {
+        return new Promise(function (resolve, reject) {
+          var settled = false, failures = 0;
+          var controllers = urls.map(function () {
+            return (typeof AbortController !== "undefined") ? new AbortController() : null;
+          });
+          var overall = setTimeout(function () {
+            if (settled) return;
+            settled = true;
+            controllers.forEach(function (c) { if (c) c.abort(); });
+            reject(new Error("timeout"));
+          }, OVERALL_LIMIT);
+          urls.forEach(function (url, i) {
+            var opts = { method: "POST", body: body, headers: { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" } };
+            if (controllers[i]) opts.signal = controllers[i].signal;
+            fetch(url, opts)
+              .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+              .then(function (data) {
+                if (settled) return;
+                settled = true;
+                clearTimeout(overall);
+                controllers.forEach(function (c, j) { if (c && j !== i) c.abort(); });
+                resolve(data);
+              })
+              .catch(function () {
+                failures++;
+                if (failures === urls.length && !settled) {
+                  settled = true;
+                  clearTimeout(overall);
+                  reject(new Error("all mirrors failed"));
+                }
+              });
+          });
+        });
+      }
+
+      function runSearch(lat, lon, radiusMiles, placeLabel) {
+        setBusy(true);
+        resultsWrap.hidden = true;
+        setStatus('<span class="note">Searching for pharmacies near ' + esc(placeLabel) + "…</span>");
+        var slowNote = setTimeout(function () {
+          if (searching) setStatus('<span class="note">Still searching… the free map servers can be slow at busy times. Please keep this page open.</span>');
+        }, 5000);
+
+        var radiusM = Math.round(radiusMiles * 1609.344);
+        var query = "[out:json][timeout:50];(" +
+          'node["amenity"="pharmacy"](around:' + radiusM + "," + lat + "," + lon + ");" +
+          'way["amenity"="pharmacy"](around:' + radiusM + "," + lat + "," + lon + ");" +
+          ");out center tags 250;";
+        var body = "data=" + encodeURIComponent(query);
+
+        fetchFirstSuccess(MIRRORS, body)
+          .then(function (data) {
+            clearTimeout(slowNote);
+            setBusy(false);
+            var seen = {}, items = [];
+            (data.elements || []).forEach(function (el) {
+              var elat = el.lat, elon = el.lon;
+              if (elat == null && el.center) { elat = el.center.lat; elon = el.center.lon; }
+              if (elat == null || elon == null) return;
+              var tags = el.tags || {};
+              var key = tags.name ? (tags.name + "@" + elat.toFixed(4) + "," + elon.toFixed(4)) : (el.type + "/" + el.id);
+              if (seen[key]) return;
+              seen[key] = true;
+              var dist = haversineMiles(lat, lon, elat, elon);
+              if (dist > radiusMiles + 0.1) return;
+              items.push({ tags: tags, lat: elat, lon: elon, dist: dist });
+            });
+            items.sort(function (a, b) { return a.dist - b.dist; });
+
+            showMap(lat, lon, radiusMiles);
+            resultsTitle.textContent = items.length
+              ? items.length + (items.length === 1 ? " pharmacy" : " pharmacies") + " near " + placeLabel
+              : "No pharmacies found near " + placeLabel;
+            resultsSub.textContent = "Within " + radiusMiles + " miles, closest first. Distances are straight-line distances measured from your search point.";
+            resultsList.innerHTML = items.map(function (it) {
+              var name = it.tags.name || "Pharmacy";
+              var addr = buildAddress(it.tags);
+              var hours = it.tags.opening_hours || "";
+              var hoursHtml = "";
+              if (hours) {
+                if (hours.trim() === "24/7") {
+                  hoursHtml = '<div class="r-hours"><span class="r-open24">Open 24 hours</span> (per map data — please confirm before travelling)</div>';
+                } else {
+                  hoursHtml = '<div class="r-hours">Hours: ' + esc(hours) + "</div>";
+                }
+              }
+              var dirUrl = "https://www.google.com/maps/dir/?api=1&destination=" + it.lat + "," + it.lon;
+              return "<li>" +
+                '<div class="r-line"><span class="r-name">' + esc(name) + '</span><span class="r-dist">' +
+                  (it.dist < 0.1 ? "&lt; 0.1" : it.dist.toFixed(1)) + " mi</span></div>" +
+                (addr ? '<div class="r-addr">' + esc(addr) + "</div>" : "") +
+                hoursHtml +
+                '<div class="r-actions"><a href="' + dirUrl + '" target="_blank" rel="noopener">Get directions</a></div>' +
+                "</li>";
+            }).join("");
+            resultsWrap.hidden = false;
+            if (!items.length) {
+              setStatus('<span class="note">No pharmacies are recorded on the map within ' + radiusMiles + " miles of " + esc(placeLabel) + ". Try a larger radius, or check a nearby town.</span>");
+            } else {
+              setStatus("");
+              resultsWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          })
+          .catch(function () {
+            clearTimeout(slowNote);
+            setBusy(false);
+            setStatus('<span style="color:var(--err-ink)">Sorry — the free OpenStreetMap search services could not be reached just now, so we cannot show results. Nothing is wrong with your search; please wait a moment and try again.</span>');
+          });
+      }
+
+      btnLocate.addEventListener("click", function () {
+        if (searching) return;
+        var radius = parseFloat(document.getElementById("radius-geo").value) || 5;
+        if (!("geolocation" in navigator)) {
+          setStatus('<span style="color:var(--err-ink)">Your browser does not support location sharing. Please search by city or ZIP code instead.</span>');
+          return;
+        }
+        setBusy(true);
+        setStatus('<span class="note">Asking your browser for your location…</span>');
+        navigator.geolocation.getCurrentPosition(
+          function (pos) {
+            runSearch(pos.coords.latitude, pos.coords.longitude, radius, "your location");
+          },
+          function () {
+            setBusy(false);
+            setStatus('<span style="color:var(--err-ink)">We could not get your location. Your browser may have blocked location sharing — you can allow it in your browser settings, or simply search by city or ZIP code instead.</span>');
+          },
+          { timeout: 15000, maximumAge: 60000 }
+        );
+      });
+
+      document.getElementById("form-search").addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        if (searching) return;
+        var q = document.getElementById("q").value.trim();
+        var radius = parseFloat(document.getElementById("radius-q").value) || 5;
+        if (!q) {
+          setStatus('<span style="color:var(--err-ink)">Please type a city, town or ZIP code first.</span>');
+          return;
+        }
+        setBusy(true);
+        setStatus('<span class="note">Looking up “' + esc(q) + "”…</span>");
+        fetch("https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=" + encodeURIComponent(q),
+              { headers: { "Accept": "application/json" } })
+          .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+          .then(function (data) {
+            if (!data || !data.length) {
+              setBusy(false);
+              setStatus('<span style="color:var(--err-ink)">We could not find a place called “' + esc(q) + "”. Check the spelling, or try adding the state or country.</span>");
+              return;
+            }
+            var label = (data[0].display_name || q).split(",").slice(0, 2).join(",");
+            runSearch(parseFloat(data[0].lat), parseFloat(data[0].lon), radius, label);
+          })
+          .catch(function () {
+            setBusy(false);
+            setStatus('<span style="color:var(--err-ink)">The place-lookup service could not be reached just now. Please wait a moment and try again.</span>');
+          });
+      });
+
+      render();
+    })();
+    </script>
+  </body>
+</html>
